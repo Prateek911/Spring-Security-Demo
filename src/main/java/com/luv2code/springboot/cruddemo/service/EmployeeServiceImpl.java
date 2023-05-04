@@ -15,11 +15,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
+
         employeeRepository = theEmployeeRepository;
+
     }
 
     @Override
     public List<Employee> findAll() {
+        System.out.println("calling find all");
         return employeeRepository.findAll();
     }
 
@@ -42,11 +45,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee save(Employee theEmployee) {
+
         return employeeRepository.save(theEmployee);
     }
 
     @Override
     public void deleteById(int theId) {
+
         employeeRepository.deleteById(theId);
     }
 }
