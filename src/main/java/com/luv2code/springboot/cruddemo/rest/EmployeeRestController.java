@@ -15,13 +15,16 @@ public class EmployeeRestController {
 
     @Autowired
     public EmployeeRestController(EmployeeService theEmployeeService) {
+
         employeeService = theEmployeeService;
     }
 
     // expose "/employees" and return a list of employees
     @GetMapping("/employees")
     public List<Employee> findAll() {
+        System.out.println("inside get all");
         return employeeService.findAll();
+
     }
 
     // add mapping for GET /employees/{employeeId}
@@ -48,9 +51,9 @@ public class EmployeeRestController {
 
         theEmployee.setId(0);
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Employee dbEmp = employeeService.save(theEmployee);
 
-        return dbEmployee;
+        return dbEmp;
     }
 
     // add mapping for PUT /employees - update existing employee
@@ -58,9 +61,9 @@ public class EmployeeRestController {
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee theEmployee) {
 
-        Employee dbEmployee = employeeService.save(theEmployee);
+        Employee dbEmpl = employeeService.save(theEmployee);
 
-        return dbEmployee;
+        return dbEmpl;
     }
 
     // add mapping for DELETE /employees/{employeeId} - delete employee
